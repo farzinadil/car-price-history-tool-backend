@@ -13,6 +13,13 @@ var VehicleSchema = new Schema({
     prices: []
 
   },
+  info:{
+    trims: [],
+    description:{
+      type: String
+    }
+
+  },
   Created_date: {
     type: Date,
     default: Date.now
