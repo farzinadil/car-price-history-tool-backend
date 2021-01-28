@@ -19,11 +19,26 @@ var mongoose = require('mongoose'),
     });
   };
   
-  
-  exports.load_a_vehicle = function(req, res) {
-    Vehicle.findOne({teststats: req.params.teststats}, function(err, task) {
+  exports.update_a_vehicle = function(req, res) {
+    Vehicle.findOneAndUpdate({vehicleID: req.params.vehicleID}, {pricehistory: req.body.pricehistory}, {useFindAndModify:false}, function(err, vehicle) {
       if (err)
         res.send(err);
-      res.json(task.pricehistory);
+      res.json(vehicle);
+    });
+  }
+  
+  exports.load_a_vehicle = function(req, res) {
+    Vehicle.findOne({vehicleID: req.params.vehicleID}, function(err, vehicle) {
+      if (err)
+        res.send(err);
+      res.json(vehicle.pricehistory);
+    });
+  };
+
+  exports.delete_a_vehicle = function(req, res) {
+    Vehicle.remove({vehicleID: req.params.vehicleID}, function(err, vehicle) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'Task successfully deleted' });
     });
   };

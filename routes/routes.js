@@ -12,7 +12,12 @@ module.exports = function(app) {
 
 
   app.route('/' + userKey + '/:vehicleID')
-    .get(todoList.load_a_vehicle)
+    .get(todoList.load_a_vehicle);
+
+  app.route('/' + adminKey + '/:vehicleID')
+    .put(todoList.update_a_vehicle)
+    .delete(todoList.delete_a_vehicle);
+
     
 
 
