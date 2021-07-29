@@ -10,14 +10,17 @@ var VehicleSchema = new Schema({
     
   },
   pricehistory:{
-    prices: []
+    prices: [[], [], [], [], [], []]
 
   },
   info:{
     trims: [],
     description:{
       type: String
-    }
+    },
+    make: {type: String},
+    model: {type: String},
+    year: {type: String}
 
   },
   Created_date: {
